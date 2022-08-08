@@ -1,11 +1,15 @@
 // VARIABLES
-/* const myData = data.events */
+
 const url = 'http://amazing-events.herokuapp.com/api/events'
 
-fetch(url).then(response => response.json()).then(datos => {
-    let myData = datos.events
-    crearEventos(myData, "card-container") //<--------------------LLAMADO DE FUNCIONES
-    crearCategorias(myData, "containerCategoria") 
+async function miFuncionNueva(){
+    
+    const url = await fetch('http://amazing-events.herokuapp.com/api/events')
+    let myData = await url.json()
+    let eventos = myData.events
+    console.log(eventos)
+    crearEventos(eventos, "card-container") //<--------------------LLAMADO DE FUNCIONES
+    crearCategorias(eventos, "containerCategoria") 
     crearBuscador("containerSearch")
     let checkMarcados = []
     let searchUser = ""
@@ -32,12 +36,12 @@ fetch(url).then(response => response.json()).then(datos => {
         return filterForText
     }
     function filtrarYmostrar() {
-        let cardsXnombre = filterSearch(myData, searchUser)//-----ARRAY DE EVENTS
+        let cardsXnombre = filterSearch(eventos, searchUser)//-----ARRAY DE EVENTS
         let cardsXcategory = filterCategory(cardsXnombre)
         crearEventos(cardsXcategory, "card-container")
     }
     filtrarYmostrar()
-})
+
 
 //--------------------------------------------------CREAMOS CARDS
 function crearEventos(array, div) {
@@ -91,6 +95,9 @@ function crearBuscador(div) {
     type="submit"><img width="80" src="./img/logo_amazing_events.png" alt="imagen"></button>`
     container.appendChild(search)
 }
+}
+miFuncionNueva()
+
 
 
 
