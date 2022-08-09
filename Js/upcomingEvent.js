@@ -1,6 +1,3 @@
-// VARIABLES
-
-const url = 'http://amazing-events.herokuapp.com/api/events'
 
 async function miFuncionNueva(){
     

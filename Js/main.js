@@ -1,13 +1,9 @@
-// VARIABLES
-
-const url = 'http://amazing-events.herokuapp.com/api/events'
 
 async function miFuncionNueva(){
     
     const url = await fetch('http://amazing-events.herokuapp.com/api/events')
     let myData = await url.json()
     let eventos = myData.events
-    console.log(eventos)
     crearEventos(eventos, "card-container") //<--------------------LLAMADO DE FUNCIONES
     crearCategorias(eventos, "containerCategoria") 
     crearBuscador("containerSearch")
@@ -41,8 +37,6 @@ async function miFuncionNueva(){
         crearEventos(cardsXcategory, "card-container")
     }
     filtrarYmostrar()
-
-
 //--------------------------------------------------CREAMOS CARDS
 function crearEventos(array, div) {
     let container = document.getElementById(div)
