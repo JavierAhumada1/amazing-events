@@ -1,9 +1,5 @@
-// VARIABLES
-
-const url = 'http://amazing-events.herokuapp.com/api/events'
 
 async function miFuncionNueva(){
-    
     const url = await fetch('http://amazing-events.herokuapp.com/api/events')
     let myData = await url.json()
     let eventos = myData.events
